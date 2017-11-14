@@ -12,11 +12,12 @@ import {DepartmentService} from './department/department.service';
 
 import{appRoutes} from './app.routes';
 
-import { UserComponent } from './user/user.component';
-import { UserListComponent } from './user/user-list.component';
-import { UserService } from './user/user.service';
+import { UserComponent } from './user/components/user.component';
+import { UserListComponent } from './user/components/user-list.component';
+import { UserService } from './user/services/user.service';
 
-import { UserChangePasswordComponent } from './user/userChangePassword.component';
+import { UserChangePasswordComponent } from './user/components/userChangePassword.component';
+import { UserChangeAvatarComponent } from './user/components/userChangeAvatar.component';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, HttpModule, appRoutes],
@@ -25,7 +26,8 @@ import { UserChangePasswordComponent } from './user/userChangePassword.component
                 DepartmentListComponent,
                 UserComponent,
                 UserListComponent,
-                UserChangePasswordComponent],
+                UserChangePasswordComponent,
+                UserChangeAvatarComponent],
   bootstrap:    [ AppComponent ],
   providers:    [ DepartmentService,
                 UserService]

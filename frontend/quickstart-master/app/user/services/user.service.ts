@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, URLSearchParams, RequestOptions } from '@angular/http';
+import { Http, Response, Headers, RequestOptions, RequestOptionsArgs, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { User } from './model/user';
+import { User } from '../models/user';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
@@ -40,10 +40,6 @@ export class UserService {
             roleId: user.roleId,
             isActive: user.isActive}), {headers: headers}).map((response: Response)=>response.json());
     }    
-    getImage(user: User):Observable<User>{
-        return this.http.get("http://localhost:8080/recruitment/user/"+userId)
-        .map(this.extractData);
-    }
 
     private extractData(res: Response) {
         let body = res.json();
@@ -54,4 +50,29 @@ export class UserService {
         return Observable.throw(error.status);
     }
 
+    public postImage(url: string, image: File, headers?: Headers | { [name: string]: any }, partName: string = 'image', customFormData?: { [name: string]: any }, withCredentials?: boolean): Observable<Response> {
+        if (!url || url === '') {
+          throw new Error('Url is not set! Please set it before doing queries');
+        }
+    
+        const options: RequestOptionsArgs = new RequestOptions();
+    
+        if (withCredentials) {
+          options.withCredentials = withCredentials;
+        }
+    
+        if (headers) {
+          options.headers = new Headers(headers);
+        }
+    
+    
+        // add custom form data
+        let formData = new FormData();
+        for (let key in customFormData) {
+          formData.append(key, customFormData[key]);
+        }
+        formData.append(partName, image);
+        return this.http.post(url, formData, options);
+      }
+    
 }

@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core'
-import {UserService} from './user.service';
-import {User} from './model/user';
+import {UserService} from '../services/user.service';
+import {User} from '../models/user';
 
 @Component({
     selector: 'user-list',
-    templateUrl: 'app/user/user-list.component.html'
+    templateUrl: 'app/user/components/user-list.component.html'
 })
 
 export class UserListComponent implements OnInit {

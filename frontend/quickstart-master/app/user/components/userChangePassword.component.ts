@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core'
-import { UserService } from './user.service';
-import { User } from './model/user';
+import { UserService } from '../services/user.service';
+import { User } from '../models/user';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
     selector: 'user-update-password',
-    templateUrl: 'app/user/userChangePassword.component.html',
-    styleUrls: ['app/user/user.component.css']
+    templateUrl: 'app/user/components/userChangePassword.component.html',
+    styleUrls: ['app/user/components/user.component.css']
 })
 
 export class UserChangePasswordComponent implements OnInit {

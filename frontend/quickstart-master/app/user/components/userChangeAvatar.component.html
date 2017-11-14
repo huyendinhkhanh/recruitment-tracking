@@ -1,4 +1,4 @@
-<div fileDrop [accept]="supportedExtensions" (fileOver)="onFileOver($event)" (fileDrop)="onFileChange($event)" [ngClass]="cssClass" [ngClass]="{'img-ul-file-is-over': fileOver}" [ngStyle]="style?.layout">
+<div fileDrop (fileOver)="onFileOver($event)" (fileDrop)="onFileChange($event)" [ngClass]="cssClass" [ngClass]="{'img-ul-file-is-over': fileOver}" [ngStyle]="style?.layout">
 <div class="img-ul-file-upload img-ul-hr-inline-group">    
 <label *ngIf="fileCounter != max" class="img-ul-upload img-ul-button" [ngStyle]="style?.selectButton" [ngClass]="{'img-ul-disabled': disabled}">
  <span [innerText]="buttonCaption"></span>

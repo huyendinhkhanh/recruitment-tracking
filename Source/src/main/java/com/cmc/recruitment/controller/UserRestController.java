@@ -58,38 +58,26 @@ public class UserRestController {
 				new ResponseEntity<List<User>>(userService.getAllUsers(), HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/post-image", method = RequestMethod.POST)
-	public ResponseEntity<String> handleFileUpload(@RequestParam("file") MultipartFile file) {
-		String message = "";
-		try {
-			userServiceImpl.store(file);
-			files.add(file.getOriginalFilename());
-
-			message = "You successfully uploaded " + file.getOriginalFilename() + "!";
-			return ResponseEntity.status(HttpStatus.OK).body(message);
-		} catch (Exception e) {
-			message = "FAIL to upload " + file.getOriginalFilename() + "!";
-			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(message);
-		}
-	}
-
-	@RequestMapping(value = "/get-all-images", method = RequestMethod.GET)
-	public ResponseEntity<List<String>> getListFiles(Model model) {
-		List<String> fileNames = files
-				.stream().map(fileName -> MvcUriComponentsBuilder
-						.fromMethodName(UserRestController.class, "getFile", fileName).build().toString())
-				.collect(Collectors.toList());
-
-		return ResponseEntity.ok().body(fileNames);
-	}
-
-	@RequestMapping(value = "/images/files/{filename:.+}", method = RequestMethod.GET)
-	@ResponseBody
-	public ResponseEntity<Resource> getFile(@PathVariable String filename) {
-		Resource file = userServiceImpl.loadFile(filename);
-		return ResponseEntity.ok()
-				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"")
-				.body(file);
-	}
-
-}
+	@RequestMapping(value = "/fileUpload", method = RequestMethod.POST)
+	@Produces(MediaType.APPLICATION_JSON) 
+	public Data continueFileUpload(HttpServletRequest request, HttpServletResponse response){
+	        MultipartHttpServletRequest mRequest;
+	String filename = "upload.xlsx";
+	try {
+	   mRequest = (MultipartHttpServletRequest) request;
+	   mRequest.getParameterMap();
+	   Iterator itr = mRequest.getFileNames();
+	   while (itr.hasNext()) {
+	        MultipartFile mFile = mRequest.getFile(itr.next());
+	        String fileName = mFile.getOriginalFilename();
+	        System.out.println(fileName);
+	        java.nio.file.Path path = Paths.get("C:/Data/DemoUpload/" + filename);
+	        Files.deleteIfExists(path);
+	        InputStream in = mFile.getInputStream();
+	        Files.copy(in, path);
+	 }
+	   } catch (Exception e) {
+	        e.printStackTrace();
+	   }
+	return null;
+	}}

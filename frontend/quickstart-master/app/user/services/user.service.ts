@@ -40,7 +40,6 @@ export class UserService {
             avatar: user.avatar,
             password: user.password,
             email: user.email,
-            departmentId: user.departmentId,
             roleId: user.roleId,
             isActive: user.isActive}), {headers: headers}).map((response: Response)=>response.json());
     }    
@@ -53,7 +52,6 @@ export class UserService {
             avatar: user.avatar,
             password: user.password,
             email: user.email,
-            departmentId: user.departmentId,
             roleId: user.roleId,
             isActive: user.isActive}), {headers: headers}).map((response: Response)=>response.json());
     }    

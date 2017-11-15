@@ -15,7 +15,6 @@ export class UserComponent implements OnInit {
     avatar: string;
     password: string;
     email: string;
-    departmentId: number;
     roleId: number;
     isActive: number;
 
@@ -29,7 +28,6 @@ export class UserComponent implements OnInit {
             this.avatar = user.avatar;
             this.password = user.password;
             this.email = user.email;
-            this.departmentId = user.departmentId;
             this.roleId = user.roleId;
             this.isActive = user.isActive;
         });

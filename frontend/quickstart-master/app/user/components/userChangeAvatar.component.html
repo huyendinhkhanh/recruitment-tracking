@@ -3,8 +3,6 @@
   <table border="1">
     <tr>
       <th>Image</th>
-      
-  
     </tr>
     <tr *ngFor="let image of images">
           <td><img class="img-responsive" src="{{image.url}}" (click)="saveAvatar(image.url)"></td>

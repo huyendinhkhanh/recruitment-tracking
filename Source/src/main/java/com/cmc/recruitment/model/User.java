@@ -27,9 +27,6 @@ public class User {
 	@Column(name = "Email", nullable = false)
 	private String email;
 
-	@Column(name = "DepartmentId", nullable = false)
-	private long departmentId;
-
 	@Column(name = "RoleId", nullable = true)
 	private long roleId;
 
@@ -40,7 +37,7 @@ public class User {
 		super();
 	}
 
-	public User(long userId, String name, String avatar, String password, String email, long departmentId, long roleId,
+	public User(long userId, String name, String avatar, String password, String email, long roleId,
 			int isActive) {
 		super();
 		this.userId = userId;
@@ -48,7 +45,6 @@ public class User {
 		this.avatar = avatar;
 		this.password = password;
 		this.email = email;
-		this.departmentId = departmentId;
 		this.roleId = roleId;
 		this.isActive = isActive;
 	}
@@ -93,14 +89,6 @@ public class User {
 		this.email = email;
 	}
 
-	public long getDepartmentId() {
-		return departmentId;
-	}
-
-	public void setDepartmentId(long departmentId) {
-		this.departmentId = departmentId;
-	}
-
 	public long getRoleId() {
 		return roleId;
 	}
@@ -117,11 +105,5 @@ public class User {
 		this.isActive = isActive;
 	}
 
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", name=" + name + ", avatar=" + avatar + ", password=" + password
-				+ ", email=" + email + ", departmentId=" + departmentId + ", roleId=" + roleId + ", isActive="
-				+ isActive + "]";
-	}
 
 }

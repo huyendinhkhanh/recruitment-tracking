@@ -16,7 +16,6 @@ export class UserChangePasswordComponent implements OnInit {
     avatar: string;
     password: string;
     email: string;
-    departmentId: number;
     roleId: number;
     isActive: number;
     oldPassword: string;
@@ -37,7 +36,6 @@ export class UserChangePasswordComponent implements OnInit {
             this.avatar = user.avatar;
             this.password = user.password;
             this.email = user.email;
-            this.departmentId = user.departmentId;
             this.roleId = user.roleId;
             this.isActive = user.isActive;
         });
@@ -54,7 +52,6 @@ export class UserChangePasswordComponent implements OnInit {
             avatar: this.avatar,
             password: this.password,
             email: this.email,
-            departmentId: this.departmentId,
             roleId: this.roleId,
             isActive: this.isActive
         }

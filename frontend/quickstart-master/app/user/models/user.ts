@@ -4,7 +4,6 @@ export interface User {
     avatar: string;
     password: string;
     email: string;
-    departmentId: number;
     roleId: number;
     isActive: number;
 }

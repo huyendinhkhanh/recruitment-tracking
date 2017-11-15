@@ -23,7 +23,6 @@ public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao{
 		u.setAvatar(user.getAvatar());
 		u.setPassword(user.getPassword());
 		u.setEmail(user.getEmail());
-		u.setDepartmentId(user.getDepartmentId());
 		u.setRoleId(user.getRoleId());
 		u.setIsActive(user.getIsActive());
 		getSession().save(u);

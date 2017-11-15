@@ -4,3 +4,7 @@ row{
 .btn {
     margin-right: 20px;
 }
+.img-responsive {
+    height: 100px;
+    width: 100px;
+}

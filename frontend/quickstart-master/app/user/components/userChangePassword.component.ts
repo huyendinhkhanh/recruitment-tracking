@@ -76,9 +76,7 @@ export class UserChangePasswordComponent implements OnInit {
 
 
 
-/*         this.userService.update(this.userId, user);
-        this.router.navigate(['/user']);
- */    }
+    }
     changePassword(user: User) {
         this.userService.changePassword(user).subscribe(data=>{
         });

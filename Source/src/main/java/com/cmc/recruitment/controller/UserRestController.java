@@ -58,26 +58,4 @@ public class UserRestController {
 				new ResponseEntity<List<User>>(userService.getAllUsers(), HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/fileUpload", method = RequestMethod.POST)
-	@Produces(MediaType.APPLICATION_JSON) 
-	public Data continueFileUpload(HttpServletRequest request, HttpServletResponse response){
-	        MultipartHttpServletRequest mRequest;
-	String filename = "upload.xlsx";
-	try {
-	   mRequest = (MultipartHttpServletRequest) request;
-	   mRequest.getParameterMap();
-	   Iterator itr = mRequest.getFileNames();
-	   while (itr.hasNext()) {
-	        MultipartFile mFile = mRequest.getFile(itr.next());
-	        String fileName = mFile.getOriginalFilename();
-	        System.out.println(fileName);
-	        java.nio.file.Path path = Paths.get("C:/Data/DemoUpload/" + filename);
-	        Files.deleteIfExists(path);
-	        InputStream in = mFile.getInputStream();
-	        Files.copy(in, path);
-	 }
-	   } catch (Exception e) {
-	        e.printStackTrace();
-	   }
-	return null;
-	}}
+}

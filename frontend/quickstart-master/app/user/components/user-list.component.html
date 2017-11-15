@@ -16,9 +16,9 @@
 
   </tr>
   <tr *ngFor="let user of users">
-    <td>{{ user?.userId }}</td>
+    <td>{{ user.userId }}</td>
     <td>{{ user.name }}</td>
-    <td>{{ user.avatar }}</td>
+    <td><img class="img-responsive" src="{{user.avatar}}"></td>
     <td>{{ user.password }}</td>
     <td>{{ user.email }}</td>
     <td>{{ user.departmentId }}</td>

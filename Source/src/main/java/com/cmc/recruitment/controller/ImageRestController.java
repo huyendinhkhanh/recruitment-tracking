@@ -44,17 +44,4 @@ public class ImageRestController {
 				new ResponseEntity<List<Image>>(imageService.getAllImages(), HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/all/avatar-images", method = RequestMethod.GET)
-	public ResponseEntity<List<Image>> getAllAvatarImages() {
-		List<Image> avatarImages = imageService.getAllImages();
-		for (int i = 0; i < avatarImages.size(); i++) {
-			if (!avatarImages.get(i).getDescription().equals("avatar-user")) {
-				avatarImages.remove(i);
-			}
-		}
-		return avatarImages.isEmpty() ? 
-				new ResponseEntity<List<Image>>(HttpStatus.NO_CONTENT) 
-				: 
-				new ResponseEntity<List<Image>>(avatarImages, HttpStatus.OK);
-	}
 }
